@@ -176,21 +176,31 @@ function useReveal() {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    // If already in viewport on mount, reveal immediately
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight + 100) {
+      el.classList.add("visible");
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.05, rootMargin: "0px 0px 100px 0px" }
     );
 
-    const el = ref.current;
-    if (el) observer.observe(el);
+    observer.observe(el);
     return () => {
-      if (el) observer.unobserve(el);
+      observer.unobserve(el);
     };
   }, []);
 
