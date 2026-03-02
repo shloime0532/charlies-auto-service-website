@@ -108,3 +108,28 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* No-JS fallback: content visible by default if no JS */
+@media (scripting: none) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .animate-fade-up,
+  .animate-fade-up-delay-1,
+  .animate-fade-up-delay-2,
+  .animate-fade-up-delay-3,
+  .animate-fade-up-delay-4 {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* Hide scrollbar for mobile tab strip */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

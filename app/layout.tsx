@@ -10,6 +10,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://charlies-auto-service-website.vercel.app"),
+  // Live URL: https://charlies-auto-service-website.vercel.app
   title: "Charlies Auto Service | Trusted Auto Repair in Lakewood, NJ",
   description:
     "5-star rated auto repair shop in Lakewood, NJ. Expert engine, brake, transmission, and electrical repair. Call (848) 222-1964 for honest, reliable service.",

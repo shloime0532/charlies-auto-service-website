@@ -271,23 +271,16 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between md:h-20">
             {/* Logo */}
-            <div className="flex items-center gap-3">
+            <a href="#" className="flex-shrink-0">
               <Image
-                src="/logo.png"
+                src="/logo-white.png"
                 alt="Charlies Auto Service"
-                width={40}
-                height={40}
-                className="h-8 w-8 rounded md:h-10 md:w-10"
+                width={160}
+                height={50}
+                className="h-9 w-auto md:h-11"
+                priority
               />
-              <div className="text-white">
-                <p className="text-sm font-extrabold leading-tight md:text-base">
-                  CHARLIES
-                </p>
-                <p className="text-[10px] font-medium tracking-widest uppercase opacity-70 md:text-xs">
-                  Auto Service
-                </p>
-              </div>
-            </div>
+            </a>
 
             {/* Desktop Nav */}
             <div className="hidden items-center gap-8 md:flex">
@@ -497,7 +490,7 @@ export default function Home() {
 
           <RevealSection>
             {/* Tab Buttons — scrollable on mobile */}
-            <div className="mb-8 flex gap-2 overflow-x-auto pb-2 md:flex-wrap md:justify-center md:gap-3 md:overflow-visible md:pb-0">
+            <div className="scrollbar-hide mb-8 flex gap-2 overflow-x-auto pb-2 md:flex-wrap md:justify-center md:gap-3 md:overflow-visible md:pb-0">
               {services.map((service) => (
                 <button
                   key={service.id}
@@ -734,6 +727,54 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ───────────── SHOP / ABOUT STRIP ───────────── */}
+      <section className="relative overflow-hidden bg-primary">
+        <div className="mx-auto grid max-w-7xl items-center md:grid-cols-2">
+          {/* Image */}
+          <div className="relative h-64 md:h-[400px]">
+            <Image
+              src="/shop.png"
+              alt="Inside Charlies Auto Service — clean, professional auto repair facility"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/50 to-transparent md:from-transparent md:to-primary/80" />
+          </div>
+          {/* Content */}
+          <div className="px-6 py-12 md:px-12 md:py-16 lg:px-20">
+            <RevealSection>
+              <p className="mb-2 text-sm font-bold uppercase tracking-widest text-accent">
+                Our Shop
+              </p>
+              <h2 className="mb-4 text-3xl font-extrabold text-white sm:text-4xl">
+                A Shop You Can Trust
+              </h2>
+              <p className="mb-6 text-white/60 leading-relaxed">
+                Our clean, well-equipped facility at 125 Main St is built for
+                one thing: getting your car fixed right. With professional-grade
+                lifts, advanced diagnostic tools, and a team that treats every
+                vehicle like their own, you&apos;re in good hands.
+              </p>
+              <ul className="space-y-3">
+                {[
+                  "Professional-grade equipment & lifts",
+                  "Advanced computer diagnostic tools",
+                  "Clean, organized workspace",
+                  "Comfortable waiting area",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-sm text-white/70">
+                    <svg className="h-5 w-5 shrink-0 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </RevealSection>
+          </div>
+        </div>
+      </section>
+
       {/* ───────────── FAQ ACCORDION ───────────── */}
       <section id="faq" className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
@@ -839,21 +880,13 @@ export default function Home() {
           <div className="grid gap-8 md:grid-cols-3">
             {/* Brand */}
             <div>
-              <div className="mb-4 flex items-center gap-3">
-                <Image
-                  src="/logo.png"
-                  alt="Charlies Auto Service"
-                  width={36}
-                  height={36}
-                  className="h-9 w-9 rounded"
-                />
-                <div className="text-white">
-                  <p className="text-sm font-extrabold">CHARLIES</p>
-                  <p className="text-[10px] font-medium tracking-widest uppercase opacity-70">
-                    Auto Service
-                  </p>
-                </div>
-              </div>
+              <Image
+                src="/logo-white.png"
+                alt="Charlies Auto Service"
+                width={140}
+                height={44}
+                className="mb-4 h-10 w-auto"
+              />
               <p className="text-sm text-white/40 leading-relaxed">
                 Lakewood&apos;s trusted auto repair shop. Honest diagnostics,
                 expert repairs, and fair prices since day one.
@@ -926,6 +959,21 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* ───────────── STICKY MOBILE CTA ───────────── */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-primary p-3 md:hidden">
+        <a
+          href="tel:8482221964"
+          className="flex items-center justify-center gap-2 rounded-xl bg-accent py-3.5 text-lg font-extrabold text-white transition-all active:scale-95"
+        >
+          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          Call Now &mdash; (848) 222-1964
+        </a>
+      </div>
+      {/* Bottom padding for sticky CTA on mobile */}
+      <div className="h-16 md:hidden" />
     </>
   );
 }
